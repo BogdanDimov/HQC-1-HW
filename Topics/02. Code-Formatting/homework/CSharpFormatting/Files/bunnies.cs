@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace High.Quality.Code.BadExample
 {
-    using System.Runtime.Serialization.Formatters.Binary;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class Bunnies
     {
         static void Main(string[] args)
         {
             var bunnies = new List<Bunny>
             {
-                new Bunny { Name = "Leonid", Age= 1, FurType = FurType.NotFluffy },
-                new Bunny { Age= 2, Name = "Rasputin", FurType = FurType.ALittleFluffy },
-                new Bunny { FurType = FurType.ALittleFluffy, Name = "Tiberii", Age= 3, },
-                new Bunny { Name = "Neron", FurType = FurType.ALittleFluffy, Age= 1 },
-                new Bunny { Name = "Klavdii", Age= 3, FurType = FurType.Fluffy },
-                new Bunny { Name = "Vespasian", Age= 3, FurType = FurType.Fluffy },
-                new Bunny { Name = "Domician",Age = 4, FurType = FurType.FluffyToTheLimit },
-                new Bunny { Name = "Tit", Age= 2, FurType = FurType.FluffyToTheLimit }
+                new Bunny { Name = "Leonid", Age = 1, FurType = FurType.NotFluffy },
+                new Bunny { Name = "Rasputin", Age = 2, FurType = FurType.ALittleFluffy },
+                new Bunny { Name = "Tiberii", Age = 3, FurType = FurType.ALittleFluffy },
+                new Bunny { Name = "Neron", Age = 1, FurType = FurType.ALittleFluffy },
+                new Bunny { Name = "Klavdii", Age = 3, FurType = FurType.Fluffy },
+                new Bunny { Name = "Vespasian", Age = 3, FurType = FurType.Fluffy },
+                new Bunny { Name = "Domician", Age = 4, FurType = FurType.FluffyToTheLimit },
+                new Bunny { Name = "Tit", Age = 2, FurType = FurType.FluffyToTheLimit }
             };
 
-            // Introduce all bunnies 
+            // Introduce all bunnies
             var consoleWriter = new ConsoleWriter();
             foreach (var bunny in bunnies)
             {
@@ -34,7 +33,7 @@ namespace High.Quality.Code.BadExample
 
             // Create bunnies text file
             var bunniesFilePath = @"..\..\bunnies.txt";
-            varfileStream = File.Create(bunniesFilePath);
+            var fileStream = File.Create(bunniesFilePath);
             fileStream.Close();
 
             // Save bunnies to a text file
@@ -52,20 +51,21 @@ namespace High.Quality.Code.BadExample
     public class Bunny
     {
         public int Age { get; set; }
+
         public string Name { get; set; }
+
         public FurType FurType { get; set; }
 
         public void Introduce(IWriter writer)
         {
             writer.WriteLine($"{this.Name} - \"I am {this.Age} years old!\"");
-            writer.WriteLine($"{this.Name} - \"And I am {this.FurType.ToString().SplitToSeparateWordsByUppercaseLetter()}");
+            writer.WriteLine($"{this.Name} - \"And I am {this.FurType.ToString().SplitToSeparateWordsByUppercaseLetter()}\"");
         }
 
         public override string ToString()
         {
             var builderSize = 200;
             var builder = new StringBuilder(builderSize);
-
             builder.AppendLine($"Bunny name: {this.Name}");
             builder.AppendLine($"Bunny age: {this.Age}");
             builder.AppendLine($"Bunny fur: {this.FurType.ToString().SplitToSeparateWordsByUppercaseLetter()}");
