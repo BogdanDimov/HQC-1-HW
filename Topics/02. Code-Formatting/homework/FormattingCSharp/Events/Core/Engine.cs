@@ -1,18 +1,11 @@
-﻿using Events.Models;
-using System;
+﻿using System;
+using Events.Models;
 
 namespace Events.Core
 {
     public class Engine
     {
         private static EventHolder events = new EventHolder();
-
-        private static DateTime GetDate(string command, string commandType)
-        {
-            DateTime date = DateTime.Parse(command.Substring(commandType.Length + 1, 20));
-
-            return date;
-        }
 
         public static bool ExecuteNextCommand()
         {
@@ -42,6 +35,13 @@ namespace Events.Core
             }
 
             return false;
+        }
+
+        private static DateTime GetDate(string command, string commandType)
+        {
+            DateTime date = DateTime.Parse(command.Substring(commandType.Length + 1, 20));
+
+            return date;
         }
 
         private static void ListEvents(string command)

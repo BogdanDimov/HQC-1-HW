@@ -1,5 +1,5 @@
-﻿using Bunnies.Contracts;
-using System;
+﻿using System;
+using Bunnies.Contracts;
 
 namespace Bunnies.Providers
 {

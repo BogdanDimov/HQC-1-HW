@@ -1,8 +1,8 @@
-﻿using Bunnies.Enums;
+﻿using System.Collections.Generic;
+using System.IO;
+using Bunnies.Enums;
 using Bunnies.Models;
 using Bunnies.Providers;
-using System.Collections.Generic;
-using System.IO;
 
 namespace Bunnies
 {

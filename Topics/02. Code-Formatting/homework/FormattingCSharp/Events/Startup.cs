@@ -10,8 +10,9 @@ namespace Events
         {
             while (Engine.ExecuteNextCommand())
             {
-                Console.WriteLine(Messages.Output);
             }
+
+            Console.WriteLine(Messages.Output);
         }
     }
 }

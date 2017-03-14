@@ -14,7 +14,7 @@ namespace Bunnies.Extensions
 
             foreach (var letter in sequence)
             {
-                if (Char.IsUpper(letter))
+                if (char.IsUpper(letter))
                 {
                     builder.Append(singleWhitespace);
                 }
