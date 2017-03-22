@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Methods.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="Commands\Methods.cs" />
+    <Compile Include="Models\Point2D.cs" />
+    <Compile Include="Enums\PrintOption.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Models\Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
